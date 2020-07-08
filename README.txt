@@ -1,5 +1,4 @@
 This project uses python language to perform OCR on the given Docker Container documents (.pdf) and extracts required data.
-
 OCR_1.pdf and OCR_2.pdf are the Docker Container documents.
 
 The required data :-
