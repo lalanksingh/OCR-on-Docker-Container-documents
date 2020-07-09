@@ -7,21 +7,24 @@ pdf= wi(filename="OCR_1.pdf", resolution=300)
 img=pdf.convert('png')
 img.save(filename='u.png')
 
-pdf2= wi(filename="OCR_2.pdf", resolution=700)
+pdf2= wi(filename="OCR_2.pdf", resolution=300)
 img2=pdf2.convert('png')
 img2.save(filename='v.png')
 
 
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 img = cv2.imread('u.png')
-img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+img = cv2.GaussianBlur(img,(5,5),0)
+
+(thresh, img) = cv2.threshold(img, 200, 255, cv2.THRESH_BINARY)
 
 
 #img = cv2.resize(img, None, fx=5, fy=5, interpolation=cv2.INTER_AREA)
 
 ###############pdf 1
 ##detect boxes for each char.
-himg,wimg,_= img.shape
+himg,wimg= img.shape
 
 p=(pytesseract.image_to_string(img))
 
@@ -37,15 +40,15 @@ for b in boxes.splitlines():
 
 #print(p)
 
-a1=p[(p.find('IEC')+5):(p.find('Name')-2)]
-a2=p[(p.find('Loading')+8):(p.find('Total')-1)]
+a1=p[(p.find('IEC')+5):(p.find('Na')-1)]
+a2=p[(p.find('Loading')+9):(p.find('Total')-1)]
 a3=p[(p.find('Discharge')+10):(p.find('Loose')-1)]
 a4=p[(p.find('Gross')+16):(p.find('et Wt')-3)]
 a5=p[(p.find('Dest')+8):(p.find('No.of Ctrs')-1)]
-a6=p[(p.find('Total Pkgs')+14):(p.find('Discharge')-9)]
-a7=p[(p.find('Loose')+14):(p.find('Gross')-1)]
-a8=p[(p.find('et Wt(KGS)')+12):(p.find('Dest')-12)]
-a9=p[(p.find('of Ctrs')+11):(p.find('Nature')-3)]
+a6=p[(p.find('Total Pk')+14):(p.find('Discharge')-9)]
+a7=p[(p.find('Loose')+14):(p.find('Gross')-2)]
+a8=p[(p.find('et Wt(KGS')+12):(p.find('Dest')-12)]
+a9=p[(p.find('of Ctrs')+11):(p.find('Nature')-1)]
 
 
 #
@@ -57,10 +60,14 @@ a9=p[(p.find('of Ctrs')+11):(p.find('Nature')-3)]
 
 
 img2 = cv2.imread('v.png')
-img2 = cv2.cvtColor(img2,cv2.COLOR_BGR2RGB)
+
+img2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
+img2 = cv2.GaussianBlur(img2,(7,7),0)
+
+(thresh, img2) = cv2.threshold(img2, 150, 255, cv2.THRESH_BINARY)
 
 ##detect each word
-himg,wimg,_= img2.shape
+himg,wimg= img2.shape
 #cong = r'--oem 3 --psm 6 outputdata words'
 boxes = pytesseract.image_to_data(img2)
 #print(boxes)

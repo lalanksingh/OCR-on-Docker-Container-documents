@@ -1,23 +1,21 @@
-IEC = X
-
-  
-Port of Loading = IG) THAR DRY PORT KA
+IEC = x
+Port of Loading = ICD THAR DRY PORT KA
 Port of Discharge = Norfolk
-Gross wt(KGS) = 12329.09
+Gross wt(KGS) =  12320. 00
 Country of Dest = UNITED STATES
 Total Pkgs = 2800
-Loose pckts = 6
+Loose pckts = 0
 Net wt (KGS) = 10920.000
 No.of Ctrs = 2
 
 
-
 Container1 No. = TCLU4990548
-Container1 Seal No. = BOLTO1192980
-container1 Size = 49
-container1 Date = 20-FEB-29
+Container1 Seal No. = BOLTO11979a0
+container1 Size = 40
+container1 Date = 20-FEB-20
 
-Container2 No. = FCLUs882469
-Container2 Seal No. = BOLTOLI92079
-container2 Size = 40
-container2 Date = s
+Container2 No. = FCIU8082469
+Container2 Seal No. = BOLTO1192979
+container2 Size = 49
+container2 Date = elf
+
