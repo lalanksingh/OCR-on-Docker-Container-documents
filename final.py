@@ -1,5 +1,6 @@
 import cv2
 import pytesseract
+import os
 
 from wand.image import Image as wi
 
@@ -151,3 +152,5 @@ report.close()
 ##show image
 # cv2.imshow('Result 2',img2)
 # cv2.waitKey(0)
+
+os.startfile('ocr-report.txt')
